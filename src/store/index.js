@@ -11,7 +11,7 @@ export default new Vuex.Store({
     categories: [],
     products: [],
     site: {},
-    locale: "UZ",
+    locale: "uz",
     backend_url: "https://market-index.herokuapp.com/",
     botToken : 'https://api.telegram.org/bot5381011300:AAEq4uVHwZ99SE-cnFV63I0QRuV03T4Pzx4/',
     chatId : -723987438,
