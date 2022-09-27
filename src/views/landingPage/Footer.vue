@@ -39,7 +39,7 @@
             <p> {{$t('workTime')}} </p>
           </div>
           <div class="relax">
-            {{  site[`work_time_${getLang.toLowerCase()}`] }}
+            {{  site[`work_time_${getLang}`] }}
           </div>
           <div class="social">
             <a :href="`tel:${site.phone_number}`"
@@ -56,7 +56,7 @@
         <ul class="address">
           <li>Intex-market.uz</li>
           <li>{{ site.phone_number }}</li>
-          <li>{{  site[`address_${getLang.toLowerCase()}`] }}</li>
+          <li>{{  site[`address_${getLang}`] }}</li>
           <li>{{$t('allReserved')}}.</li>
         </ul>
       </div>

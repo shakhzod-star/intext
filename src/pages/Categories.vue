@@ -3,13 +3,13 @@
   <pulse-loader v-if="loading" :loading="loading" :color="color" class="loading" ></pulse-loader>
   <div v-else class="all" :id="category.id"  v-for="category in categoryies" :key="category.index" >
     <div class="bg" >
-      <h2   class="Title">{{   category[`name_${getLang.toLowerCase()}`] }}</h2>
+      <h2   class="Title">{{   category[`name_${getLang}`] }}</h2>
     </div>
     <div class="pools">
         <div data-aos="fade-up"  v-for="product in category.products" :key=" product.index">
       <div class="pool"  >
         <span class="status"   :style="product.status_id == 1  ? 'background: #139d4b;' :  product.status_id == 2  ? 'background: #FFE600;'  : product.status_id == 3  ? 'background: #ED2020;' : ''  "   v-if="product.status_ru != ''">{{ product.status_ru }}</span>
-        <div class="poolName">{{  product[`frame_${getLang.toLowerCase()}`] }}</div>
+        <div class="poolName">{{  product[`frame_${getLang}`] }}</div>
       <div class="box">
         <img class="categoriesImg" crossorigin="anonymous"   :src="product.image"   />
         <!-- src="@/assets/img/not-aviable.png" -->
@@ -36,7 +36,7 @@
         @click="BModal"
       />
       <div class="picture">
-        <p class="text">{{  orderItem[`frame_${getLang.toLowerCase()}`]}}</p>
+        <p class="text">{{  orderItem[`frame_${getLang}`]}}</p>
          <img crossorigin="anonymous" :src="orderItem.image" :alt="orderItem.image" />
         <span class="sum">{{  formatNumber(orderItem.sale_price) }} {{$t('money')}}   </span>
       </div>

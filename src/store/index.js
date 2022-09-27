@@ -151,7 +151,7 @@ export default new Vuex.Store({
       return state.site;
     },
     getLang(state) {
-      return state.locale;
+      return state.locale.toLowerCase();
     },
   },
   modules: {}, /// normalli tegb
