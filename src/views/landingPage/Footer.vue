@@ -40,6 +40,7 @@
           </div>
           <div class="relax">
             {{  site[`work_time_${getLang}`] }}
+           
           </div>
           <div class="social">
             <a :href="`tel:${site.phone_number}`"

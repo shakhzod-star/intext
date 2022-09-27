@@ -137,7 +137,7 @@ export default new Vuex.Store({
       state.site = data;
     },
     updateLang(state,data){
-    state.locale = data.toLowerCase()
+    state.locale = data
     }
   },
   getters: {
