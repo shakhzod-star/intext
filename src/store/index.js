@@ -59,9 +59,7 @@ export default new Vuex.Store({
             reject();
           });
       });
-      // let result = await axios.get(this.state.backend_url + "api/home/category");
-      // result = result.data;
-      // return result;
+   
     },
     fetchProducts(ctx) {
       return new Promise((resolve, reject) => {
