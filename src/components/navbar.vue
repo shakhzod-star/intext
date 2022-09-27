@@ -21,7 +21,7 @@
             class="lang"
             @click="setLocale"
           >
-            {{ this.$store.state.locale }}
+            {{ this.$store.state.locale.toUpperCase() }}
           </div>
           <button class="burger" @click="BurgerActive = !BurgerActive">
             <img src="@/assets/img/Modal/burger.svg" alt="" />

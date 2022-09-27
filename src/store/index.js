@@ -137,7 +137,7 @@ export default new Vuex.Store({
       state.site = data;
     },
     updateLang(state,data){
-    state.locale = data
+    state.locale = data.toLowerCase()
     }
   },
   getters: {
@@ -151,7 +151,7 @@ export default new Vuex.Store({
       return state.site;
     },
     getLang(state) {
-      return state.locale.toLowerCase();
+      return state.locale;
     },
   },
   modules: {}, /// normalli tegb
