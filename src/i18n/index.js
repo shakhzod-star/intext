@@ -15,8 +15,8 @@ function loadLocaleMessages () {
   return messages
 }
 let currentLang = 'uz'
-let defaultLang = localStorage.getItem('language').toLocaleLowerCase();
-if(defaultLang){
+let defaultLang = localStorage.getItem('language');
+if(defaultLang.toLocaleLowerCase()){
   currentLang = defaultLang
 }
 export default new VueI18n({
