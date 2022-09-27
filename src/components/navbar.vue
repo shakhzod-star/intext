@@ -5,7 +5,7 @@
         <a href="#" class="logo"> <img src="@/assets/img/int.svg" alt="" /> </a>
         <ul class="navList">
           <li v-for="list in getCategories" :key="list.index">
-            <a :href="'#'+ list.id ">  {{list[`name_${getLang}`]}}</a>
+            <a :href="'#'+ list.id ">  {{list[`name_${$store.state.locale}`]}}</a>
           </li>
         </ul>
         <div class="phone_social">
@@ -21,7 +21,7 @@
             class="lang"
             @click="setLocale"
           >
-            {{ this.$store.state.locale.toUpperCase() }}
+            {{ (this.getLang).toUpperCase() }}
           </div>
           <button class="burger" @click="BurgerActive = !BurgerActive">
             <img src="@/assets/img/Modal/burger.svg" alt="" />
