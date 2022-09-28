@@ -2,35 +2,36 @@
   <div class="navbar">
     <div class="navBg">
       <div class="nav">
-        <a href="#" class="logo"> <img src="@/assets/img/int.svg" alt="" /> </a>
+        <a href="#" class="logo"> <img src="@/assets/img/int.svg" alt="intex-logo" /> </a>
         <ul class="navList">
           <li v-for="list in getCategories" :key="list.index">
-            <a :href="'#'+ list.id ">  {{list[`name_${$store.state.locale}`]}}</a>
+            <a  :href="'#'+ list.id ">  {{list[`name_${getLang}`]}}</a>
           </li>
         </ul>
         <div class="phone_social">
           <a class="phone" :href="`tel:${site.phone_number}`">{{site.phone_number}}</a>
           <a :href="site.telegram_link" target="_blank"
-            ><img src="@/assets/img/social/telegram.svg" alt=""
+            ><img src="@/assets/img/social/telegram.svg" alt="telegram"
           /></a>
           <a :href="site.instagram_link" target="_blank"
-            ><img src="@/assets/img/social/instagram.svg" alt=""
+            ><img src="@/assets/img/social/instagram.svg" alt="instagram"
           /></a>
           <div
+           style="text-transform: uppercase;"
             ref="lang"
             class="lang"
             @click="setLocale"
           >
-            {{ (this.getLang).toUpperCase() }}
+            {{ getLang ? getLang : 'uz' }}
           </div>
           <button class="burger" @click="BurgerActive = !BurgerActive">
-            <img src="@/assets/img/Modal/burger.svg" alt="" />
+            <img src="@/assets/img/Modal/burger.svg" alt="burger" />
           </button>
         </div>
       </div>
     </div>
     <div class="burgerMenu"  :class="{  active : BurgerActive  }">
-      <a href="" class="intex"><img src="@/assets/img/int.svg" alt="" /></a>
+      <a href="" class="intex"><img src="@/assets/img/int.svg" alt="intex-logo" /></a>
       <ul class="navList">
         <li class="list" v-for="list in getCategories" :key="list.index">
           <a :href=" '#' + list.id" @click="BurgerActive = !BurgerActive"  >{{ list[`name_${getLang}`]   }}</a>
@@ -38,14 +39,14 @@
       </ul>
       <div class="socials">
         <a class="phone" :href="`tel:${site.phone_number}`">
-          <img src="@/assets/img/social/phonee.svg" alt="" /> {{ $t("call") }}
+          <img src="@/assets/img/social/phonee.svg" alt="phone" /> {{ $t("call") }}
         </a>
         <a class="social" :href="site.telegram_link" target="_blank">
-          <img src="@/assets/img/social/telegramm.svg" alt="" />
+          <img src="@/assets/img/social/telegramm.svg" alt="telegram" />
           {{ $t("telegram") }}
         </a>
         <a class="social" :href="site.instagram_link" target="_blank">
-          <img src="@/assets/img/social/instagramm.svg" alt="" />
+          <img src="@/assets/img/social/instagramm.svg" alt="instagram" />
           {{ $t("instagram") }}
         </a>
       </div>
@@ -68,6 +69,7 @@ export default {
       site: {},
       isActive: false,
       navList: [],
+      lang : 'uz'
     };
   },
   computed: {
@@ -77,18 +79,22 @@ export default {
     ...mapActions(["fetchSite","fetchCategories", "fetchLang"]),
     setLocale() {
       this.isActive = !this.isActive
-      if (this.isActive && this.getLang != 'RU'  ){
-          this.fetchLang('RU')
+      if (this.isActive && this.getLang != 'ru'  ){
+          this.fetchLang('ru')
       }else{
-            this.fetchLang('UZ')
+            this.fetchLang('uz')
       }
-      this.$i18n.locale = this.getLang.toLowerCase();       
+      this.$i18n.locale = this.getLang      
       localStorage.setItem('language',this.getLang)
     },
   },
    mounted() {
     let locale =  localStorage.getItem('language')
-    this.fetchLang(locale)
+    if(locale == null){
+      this.fetchLang('uz')
+    }else{
+      this.fetchLang(locale)
+    }
     let site = JSON.parse(localStorage.getItem("siteInfo"));
     if( site == null){
    this.fetchSite().then((res) => {
@@ -105,7 +111,7 @@ export default {
    
   },
   created() {
- 
+ this.$store.dispatch('fetchLang')
   },
 };
 </script>

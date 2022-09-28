@@ -11,7 +11,7 @@
         <span class="status"   :style="product.status_id == 1  ? 'background: #139d4b;' :  product.status_id == 2  ? 'background: #FFE600;'  : product.status_id == 3  ? 'background: #ED2020;' : ''  "   v-if="product.status_ru != ''">{{ product.status_ru }}</span>
         <div class="poolName">{{  product[`frame_${getLang}`] }}</div>
       <div class="box">
-        <img class="categoriesImg" crossorigin="anonymous"   :src="product.image"   />
+        <img class="categoriesImg" crossorigin="anonymous"   :src="product.image" :alt="product.image"   />
         <!-- src="@/assets/img/not-aviable.png" -->
       </div>
         <!-- <div class="poolComment" v-if="product.comment" >{{ product.comment }}</div> -->
@@ -32,13 +32,13 @@
       <img
         class="cross"
         src="@/assets/img/Modal/cross.png"
-        alt=""
+        alt="cross"
         @click="BModal"
       />
       <div class="picture">
-        <p class="text">{{  orderItem[`frame_${getLang}`]}}</p>
+        <p class="text">{{orderItem[`frame_${getLang}`]}}</p>
          <img crossorigin="anonymous" :src="orderItem.image" :alt="orderItem.image" />
-        <span class="sum">{{  formatNumber(orderItem.sale_price) }} {{$t('money')}}   </span>
+        <span class="sum">{{formatNumber(orderItem.sale_price) }} {{$t('money')}}   </span>
       </div>
       <form class="info" @submit.prevent="save">
          <input
@@ -99,9 +99,9 @@
         @click="BModal"
         class="cross"
         src="@/assets/img/Modal/cross.png"
-        alt=""
+        alt="cross"
       />
-      <img class="success" src="@/assets/img/Modal/success.png" alt="" />
+      <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
       <p class="text"> {{$t('thanks')}} !</p>
       <span class="message"
         > {{$t('orderSuccess')}} .</span

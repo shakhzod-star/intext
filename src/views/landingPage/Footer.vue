@@ -35,7 +35,7 @@
       <div class="dateAdd">
         <div class="DateTime">
           <div class="time">
-            <img src="@/assets/img/time.png" alt="" />
+            <img src="@/assets/img/time.png" alt="time" />
             <p> {{$t('workTime')}} </p>
           </div>
           <div class="relax">
@@ -44,13 +44,13 @@
           </div>
           <div class="social">
             <a :href="`tel:${site.phone_number}`"
-              ><img src="@/assets/img/social/phone.png" alt=""
+              ><img src="@/assets/img/social/phone.png" alt="phone"
             /></a>
             <a :href="site.telegram_link" target="_blank">
-              <img src="@/assets/img/social/telegram.svg" alt=""
+              <img src="@/assets/img/social/telegram.svg" alt="telegram"
             /></a>
             <a :href="site.instagram_link" target="_blank"
-              ><img src="@/assets/img/social/instagram.svg" alt=""
+              ><img src="@/assets/img/social/instagram.svg" alt="instagram"
             /></a>
           </div>
         </div>
@@ -71,9 +71,9 @@
           @click="successModal = !successModal"
           class="cross"
           src="@/assets/img/Modal/cross.png"
-          alt=""
+          alt="cross"
         />
-        <img class="success" src="@/assets/img/Modal/success.png" alt="" />
+        <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
         <p class="text"> {{$t('thanks')}} !</p>
         <span class="message"
           > {{$t('yourOrderFramed')}}  </span

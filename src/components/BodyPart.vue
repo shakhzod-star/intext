@@ -15,9 +15,9 @@
           class="cross"
           @click="modal = false"
           src="@/assets/img/Modal/cross.png"
-          alt=""
+          alt="cross"
         />
-        <img class="feedback" src="@/assets/img/Modal/feedback.png" alt="" />
+        <img class="feedback" src="@/assets/img/Modal/feedback.png" alt="feedback" />
         <p class="text"> {{$t('getConsult')}} </p>
         <input
           :class="v$.form.name.$error ? 'form-error' : ''"
@@ -57,9 +57,9 @@
           @click="successModal = !successModal"
           class="cross"
           src="@/assets/img/Modal/cross.png"
-          alt=""
+          alt="cross"
         />
-        <img class="success" src="@/assets/img/Modal/success.png" alt="" />
+        <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
         <p class="text"> {{$t('thanks')}} !</p>
         <span class="message"
           > {{$t('orderSuccess')}} .</span
@@ -73,21 +73,21 @@
         <h2> {{$t('valuesClients')}} </h2>
         <div class="ours_link">
           <div class="box">
-            <img src="@/assets/img/slide/slider2.png" alt="" />
+            <img src="@/assets/img/slide/slider2.png" alt="slider" />
             <ul>
               <li><span>{{$t('experience')}}</span></li>
               <li><p>{{$t('professionalismEmployees')}}</p></li>
             </ul>
           </div>
           <div class="box">
-            <img src="@/assets/img/slide/slider.png" alt="" />
+            <img src="@/assets/img/slide/slider.png" alt="slider" />
             <ul>
               <li><span>{{$t('delivery')}}</span></li>
               <li><p>{{$t('freeDeliveryCity')}}</p></li>
             </ul>
           </div>
           <div class="box">
-            <img src="@/assets/img/slide/slider3.png" alt="" />
+            <img src="@/assets/img/slide/slider3.png" alt="slidertick" />
             <ul>
               <li><span> {{$t('quality')}}</span></li>
               <li><p> {{$t('sturdyPools')}}</p></li>
@@ -118,18 +118,18 @@
               <li> {{$t('highlightMost')}}</li>
             </ul>
             <ul>
-              <li><img src="@/assets/img/tick.png" alt="" /> {{$t('strength')}}</li>
+              <li><img src="@/assets/img/tick.png" alt="tick" /> {{$t('strength')}}</li>
               <li>
-                <img src="@/assets/img/tick.png" alt="" /> {{$t('easyInstall')}}
+                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('easyInstall')}}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="" />  {{$t('beautifulColors')}}
+                <img src="@/assets/img/tick.png" alt="tick" />  {{$t('beautifulColors')}}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="" /> {{$t('stylishDesign')}}
+                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('stylishDesign')}}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="" /> {{$t('highQualityJust')}}
+                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('highQualityJust')}}
               </li>
             </ul>
           </div>
