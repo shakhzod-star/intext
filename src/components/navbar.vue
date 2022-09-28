@@ -18,7 +18,6 @@
           /></a>
           <div
            style="text-transform: uppercase;"
-            ref="lang"
             class="lang"
             @click="setLocale"
           >
@@ -31,7 +30,7 @@
       </div>
     </div>
     <div class="burgerMenu"  :class="{  active : BurgerActive  }">
-      <a href="" class="intex"><img src="@/assets/img/int.svg" alt="intex-logo" /></a>
+      <a href="#" class="intex"><img src="@/assets/img/int.svg" alt="intex-logo" /></a>
       <ul class="navList">
         <li class="list" v-for="list in getCategories" :key="list.index">
           <a :href=" '#' + list.id" @click="BurgerActive = !BurgerActive"  >{{ list[`name_${getLang}`]   }}</a>
