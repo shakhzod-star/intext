@@ -167,6 +167,9 @@ img {
   max-height: 584px;
   height: 100%;
   overflow-y: scroll;
+  &::-webkit-scrollbar{
+    display: none;
+  }
   .cross {
     position: absolute;
     top: 22px;
