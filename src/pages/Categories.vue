@@ -8,7 +8,7 @@
     <div class="pools">
         <div data-aos="fade-up"  v-for="product in category.products" :key=" product.index">
       <div class="pool"  >
-        <span class="status"   :style="product.status_id == 1  ? 'background: #139d4b;' :  product.status_id == 2  ? 'background: #FFE600;'  : product.status_id == 3  ? 'background: #ED2020;' : ''  "   v-if="product.status_ru != ''">{{ product.status_ru }}</span>
+        <span class="status"   :style="product.status_id == 1  ? 'background: #000000;' :  product.status_id == 2  ? 'background: #FFE600;'  : product.status_id == 3  ? 'background: #ED2020;' : ''  "   v-if="product.status_ru != ''">{{ product.status_ru }}</span>
         <div class="poolName">{{  product[`frame_${getLang}`] }}</div>
       <div class="box">
         <img class="categoriesImg" crossorigin="anonymous"   :src="product.image" :alt="product.image"   />
