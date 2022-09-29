@@ -2,134 +2,157 @@
   <div>
     <div class="bg">
       <div class="modalPart">
-        <h2 class="Title"> {{$t("freeDeliver")}} </h2>
-        <p class="text">
-          {{$t('orderFreeIn')}}  {{$t('orderPayOut')}}
-        </p>
-        <button class="add" @click="modal = !modal"> {{$t('checkout')}} </button>
+        <h2 class="Title">{{ $t("freeDeliver") }}</h2>
+        <p class="text">{{ $t("orderFreeIn") }} {{ $t("orderPayOut") }}</p>
+        <button class="add" @click="modal = !modal">
+          {{ $t("checkout") }}
+        </button>
       </div>
       <div v-if="modal || successModal" class="bgModal" @click="outClick"></div>
-       <Transition name="bounce"> 
-       <form v-if="modal" class="modal" @submit.prevent=save >
-        <img
-          class="cross"
-          @click="modal = false"
-          src="@/assets/img/Modal/cross.png"
-          alt="cross"
-        />
-        <img class="feedback" src="@/assets/img/Modal/feedback.png" alt="feedback" />
-        <p class="text"> {{$t('getConsult')}} </p>
-        <input
-          :class="v$.form.name.$error ? 'form-error' : ''"
-          type="text"
-          v-model.trim="form.name"
-          :placeholder="$t('yourName')"
+      <Transition name="bounce">
+        <form v-if="modal" class="modal" @submit.prevent="save">
+          <img
+            class="cross"
+            @click="modal = false"
+            src="@/assets/img/Modal/cross.png"
+            alt="cross"
+          />
+          <img
+            class="feedback"
+            src="@/assets/img/Modal/feedback.png"
+            alt="feedback"
+          />
+          <p class="text">{{ $t("getConsult") }}</p>
+          <input
+            :class="v$.form.name.$error ? 'form-error' : ''"
+            type="text"
+            v-model.trim="form.name"
+            :placeholder="$t('yourName')"
             :aria-label="$t('yourName')"
-        />
-        <p
-          class="p-valid"
-          :style="v$.form.name.$error ? 'opacity: 1' : ''"
-          :class="v$.form.name.$error ? 'error' : ''"
-        >
-          {{$t('setName')}}
-        </p>
-        <input
-          :class="v$.form.number.$error ? 'form-error' : ''"
-          v-mask="'+998## #######'"
-          v-model.trim="form.number"
-          type="text"
-          :placeholder="$t('yourNumber')"
-             :aria-label="$t('yourNumber')"
-        />
-        <p
-          class="p-valid"
-          :style="v$.form.number.$error ? 'opacity: 1' : ''"
-          :class="v$.form.number.$error ? 'error' : ''"
-        >
-          {{$t('setNumber')}}
-        </p>
-        <button class="order" >   {{$t('order')}}</button>
-      </form>
-        </Transition>
+          />
+          <p
+            class="p-valid"
+            :style="v$.form.name.$error ? 'opacity: 1' : ''"
+            :class="v$.form.name.$error ? 'error' : ''"
+          >
+            {{ $t("setName") }}
+          </p>
+          <input
+            :class="v$.form.number.$error ? 'form-error' : ''"
+            v-mask="'+998## #######'"
+            v-model.trim="form.number"
+            type="text"
+            :placeholder="$t('yourNumber')"
+            :aria-label="$t('yourNumber')"
+          />
+          <p
+            class="p-valid"
+            :style="v$.form.number.$error ? 'opacity: 1' : ''"
+            :class="v$.form.number.$error ? 'error' : ''"
+          >
+            {{ $t("setNumber") }}
+          </p>
+          <button class="order">{{ $t("order") }}</button>
+        </form>
+      </Transition>
       <Transition name="bounce">
         <div class="successModal" v-if="successModal">
-        <img
-          @click="successModal = !successModal"
-          class="cross"
-          src="@/assets/img/Modal/cross.png"
-          alt="cross"
-        />
-        <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
-        <p class="text"> {{$t('thanks')}} !</p>
-        <span class="message"
-          > {{$t('orderSuccess')}} .</span
-        >
-      </div>
+          <img
+            @click="successModal = !successModal"
+            class="cross"
+            src="@/assets/img/Modal/cross.png"
+            alt="cross"
+          />
+          <img
+            class="success"
+            src="@/assets/img/Modal/success.png"
+            alt="success"
+          />
+          <p class="text">{{ $t("thanks") }} !</p>
+          <span class="message"> {{ $t("orderSuccess") }} .</span>
+        </div>
       </Transition>
-      
     </div>
     <div class="ours">
       <div class="ours_clients">
-        <h2> {{$t('valuesClients')}} </h2>
+        <h2>{{ $t("valuesClients") }}</h2>
         <div class="ours_link">
           <div class="box">
             <img src="@/assets/img/slide/slider2.png" alt="slider" />
             <ul>
-              <li><span>{{$t('experience')}}</span></li>
-              <li><p>{{$t('professionalismEmployees')}}</p></li>
+              <li>
+                <span>{{ $t("experience") }}</span>
+              </li>
+              <li>
+                <p>{{ $t("professionalismEmployees") }}</p>
+              </li>
             </ul>
           </div>
           <div class="box">
             <img src="@/assets/img/slide/slider.png" alt="slider" />
             <ul>
-              <li><span>{{$t('delivery')}}</span></li>
-              <li><p>{{$t('freeDeliveryCity')}}</p></li>
+              <li>
+                <span>{{ $t("delivery") }}</span>
+              </li>
+              <li>
+                <p>{{ $t("freeDeliveryCity") }}</p>
+              </li>
             </ul>
           </div>
           <div class="box">
             <img src="@/assets/img/slide/slider3.png" alt="slidertick" />
             <ul>
-              <li><span> {{$t('quality')}}</span></li>
-              <li><p> {{$t('sturdyPools')}}</p></li>
+              <li>
+                <span> {{ $t("quality") }}</span>
+              </li>
+              <li>
+                <p>{{ $t("sturdyPools") }}</p>
+              </li>
             </ul>
           </div>
         </div>
       </div>
       <div class="water">
-        <h2> {{$t('poolsInTashkent')}}</h2>
+        <h2>{{ $t("poolsInTashkent") }}</h2>
         <div class="habr">
           <div class="habr_hab">
             <ul>
-              <li> {{$t('poolsAffordable')}}</li>
-              <li>{{$t('reliableEnvironmentally')}}</li>
-              <li> {{$t('pureProducts')}}</li>
-              <li> {{$t('pleasantHoliday')}} </li>
-              <li> {{$t('installedPerfectly')}}</li>
-              <li> {{$t('activelyUseIt')}}</li>
-              <li> {{$t('duringSummer')}}</li>
-              <li> {{$t('vividEmotions')}} </li>
-              <li> {{$t('summerDays')}}</li>
+              <li>
+                {{ $t("poolsAffordable") }} {{ $t("reliableEnvironmentally") }}
+                {{ $t("pureProducts") }} {{ $t("pleasantHoliday") }}
+                {{ $t("installedPerfectly") }} {{ $t("activelyUseIt") }}
+                {{ $t("duringSummer") }} {{ $t("vividEmotions") }}
+                {{ $t("summerDays") }}
+              </li>
             </ul>
           </div>
           <div class="nabr_hub">
-            <ul>
-              <li> {{$t('poolsExtensive')}}</li>
-              <li> {{$t('listOfBenefits')}}</li>
-              <li> {{$t('highlightMost')}}</li>
+            <ul class="ticks">
+              <li>
+                {{ $t("poolsExtensive") }} {{ $t("listOfBenefits") }}
+                {{ $t("highlightMost") }}
+              </li>
             </ul>
             <ul>
-              <li><img src="@/assets/img/tick.png" alt="tick" /> {{$t('strength')}}</li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('easyInstall')}}
+                <img src="@/assets/img/tick.png" alt="tick" />
+                {{ $t("strength") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />  {{$t('beautifulColors')}}
+                <img src="@/assets/img/tick.png" alt="tick" />
+                {{ $t("easyInstall") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('stylishDesign')}}
+                <img src="@/assets/img/tick.png" alt="tick" />
+                {{ $t("beautifulColors") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" /> {{$t('highQualityJust')}}
+                <img src="@/assets/img/tick.png" alt="tick" />
+                {{ $t("stylishDesign") }}
+              </li>
+              <li>
+                <img src="@/assets/img/tick.png" alt="tick" />
+                {{ $t("highQualityJust") }}
               </li>
             </ul>
           </div>
@@ -161,14 +184,10 @@ export default {
       },
     };
   },
-  mounted(){
-     
-               
-  },
+  mounted() {},
   methods: {
-    ...mapActions(["fetchConsultation","fetchBotConsultation"]),
+    ...mapActions(["fetchConsultation", "fetchBotConsultation"]),
     save() {
-       
       this.v$.$validate();
       if (!this.v$.$error) {
         let newForm = {
@@ -183,21 +202,19 @@ export default {
               this.form.name = "";
               this.form.number = "";
             }
-            this.v$.form.name = false 
-            this.v$.form.number = false
-            setTimeout( ()=>{
-    this.successModal = false 
-  },5000)
-            
+            this.v$.form.name = false;
+            this.v$.form.number = false;
+            setTimeout(() => {
+              this.successModal = false;
+            }, 5000);
           })
           .catch((err) => {
             console.error(err);
           });
-          this.fetchBotConsultation(newForm)
+        this.fetchBotConsultation(newForm);
       }
     },
     outClick() {
-      
       if (!this.v$.$error) {
         this.modal = false;
         this.successModal = false;
@@ -227,6 +244,7 @@ export default {
     height: fit-content;
     margin: auto;
     z-index: 1001;
+    overflow-y: scroll;
     .cross {
       position: absolute;
       top: 22px;
@@ -272,7 +290,7 @@ export default {
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 10px;
       border: none;
-      padding:  5px;
+      padding: 5px;
       max-width: 200px;
       width: 100%;
       font-family: "trebuchetms";
@@ -305,7 +323,7 @@ export default {
       font-size: 20px;
       line-height: 23px;
       text-align: center;
-      padding: 0 5px ;
+      padding: 0 5px;
       height: 36px;
       display: flex;
       justify-content: center;
@@ -352,7 +370,6 @@ export default {
           max-height: 124px;
           width: 100%;
           height: 100%;
-          
         }
         ul {
           margin: 0;
@@ -402,25 +419,40 @@ export default {
       display: flex;
       margin: auto;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       max-width: 1200px;
       padding: 40px 32px 40px 32px;
-
+      .habr_hab {
+        max-width: 503px;
+        ul {
+          text-align: justify;
+        }
+      }
+      .nabr_hub {
+        max-width: 515px;
+        ul {
+          text-align: justify;
+          li {
+            margin-bottom: 5px;
+          }
+        }
+      }
       li {
         display: flex;
         align-items: center;
         font-weight: 400;
         font-size: 25px;
-        line-height: 30px;
+        line-height: 35px;
         list-style: none;
         font-family: "trebuchetms";
-        margin-bottom: 5px;
       }
       img {
         background: #009398;
         border-radius: 50%;
         padding: 3px;
         margin-right: 7px;
+        width: 22px;
+        height: 22px;
       }
     }
   }
@@ -433,8 +465,8 @@ export default {
       .ours_link {
         flex-direction: column;
         align-items: start;
-       margin-left: auto;
-       margin-right: auto;;
+        margin-left: auto;
+        margin-right: auto;
         width: 700px;
         padding: 0 25px;
         .box {
@@ -494,16 +526,15 @@ export default {
         flex-direction: column;
         align-items: start;
         .habr_hab {
-          margin-bottom: 16px;
+          margin-bottom: 10px;
         }
-        .nabr_hub{
+        .nabr_hub {
           margin-top: 5px;
-          &:nth-child(2){
-            ul{
+          &:nth-child(2) {
+            ul {
               margin-top: 10px;
             }
           }
-        
         }
         li {
         }
@@ -516,11 +547,10 @@ export default {
 @media (max-width: 750px) {
   .ours {
     .ours_clients {
-     
       h2 {
       }
       .ours_link {
-         width: 100%;
+        width: 100%;
         .box {
           img {
           }
@@ -636,8 +666,12 @@ export default {
       padding: 20px 12px 30px 12px;
       .text {
         margin: 15px 0 48px 0;
+        font-size: 18px;
+        line-height: 22px;
       }
       .add {
+        font-size: 15px;
+        line-height: 17px;
       }
     }
   }

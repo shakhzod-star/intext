@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="navBg">
       <div class="nav">
-        <a href="#" class="logo"> <img src="@/assets/img/int.svg" alt="intex-logo" /> </a>
+        <a href="#" class="logo"> INTEX-SHOP.UZ </a>
         <ul class="navList">
           <li v-for="list in getCategories" :key="list.index">
             <a  :href="'#'+ list.id ">  {{list[`name_${getLang}`]}}</a>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="burgerMenu"  :class="{  active : BurgerActive  }">
-      <a href="#" class="intex"><img src="@/assets/img/int.svg" alt="intex-logo" /></a>
+      <a href="#" class="intex">INTEX-SHOP.UZ</a>
       <ul class="navList">
         <li class="list" v-for="list in getCategories" :key="list.index">
           <a :href=" '#' + list.id" @click="BurgerActive = !BurgerActive"  >{{ list[`name_${getLang}`]   }}</a>
@@ -178,16 +178,20 @@ export default {
           text-decoration: none;
           margin-right: 14px;
           img {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
+            transition: 0.3s all ease-in-out;
+            &:hover{
+              transform: scale(1.1);
+            }
           }
         }
         a:last-child {
           margin-right: 0;
         }
         .lang {
-          height: 26px;
-          width: 26px;
+          height: 24px;
+          width: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -201,6 +205,10 @@ export default {
           background: #ffffff;
           border-radius: 3px;
           cursor: pointer;
+          transition: 0.3s all ease-in-out;
+          &:hover{
+            transform: scale(1.1);
+          }
         }
         .burger {
           display: none;
@@ -281,6 +289,7 @@ export default {
         font-size: 21px;
         line-height: 24px;
         border: none;
+        white-space: nowrap;
         color: #ffffff;
         img {
           margin-right: 16px;
@@ -383,7 +392,7 @@ export default {
             display: none;
           }
           a {
-            margin-right: 15px;
+            margin-right: 10px;
             img {
             }
           }

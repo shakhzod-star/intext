@@ -2,7 +2,7 @@
   <div class="bg">
     <div class="footer">
       <form @submit.prevent="save">
-        <h2>{{$t('freeConsultation')}}</h2>
+        <h2>{{ $t("freeConsultation") }}</h2>
         <input
           v-model.trim="form.name"
           :aria-label="$t('name')"
@@ -10,37 +10,30 @@
           type="text"
           :placeholder="$t('name')"
         />
-        <p
-          class="p-valid"
-          :style="v$.form.name.$error ? 'opacity: 1' : ''"
-        >
-         {{$t('setName')}}
+        <p class="p-valid" :style="v$.form.name.$error ? 'opacity: 1' : ''">
+          {{ $t("setName") }}
         </p>
         <input
           type="text"
           v-mask="'+998## #######'"
           v-model.trim="form.number"
           :placeholder="$t('number')"
-            :aria-label="$t('number')"
+          :aria-label="$t('number')"
           :class="v$.form.number.$error ? 'form-error' : ''"
         />
-        <p
-          class="p-valid"
-          :style="v$.form.number.$error ? 'opacity: 1' : ''"
-        >
-          {{$t('setNumber')}}
+        <p class="p-valid" :style="v$.form.number.$error ? 'opacity: 1' : ''">
+          {{ $t("setNumber") }}
         </p>
-        <button class="consult" >{{$t('toConsult')}} </button>
+        <button class="consult">{{ $t("toConsult") }}</button>
       </form>
       <div class="dateAdd">
         <div class="DateTime">
           <div class="time">
             <img src="@/assets/img/time.png" alt="time" />
-            <p> {{$t('workTime')}} </p>
+            <p>{{ $t("workTime") }}</p>
           </div>
           <div class="relax">
-            {{  site[`work_time_${getLang}`] }}
-           
+            {{ site[`work_time_${getLang}`] }}
           </div>
           <div class="social">
             <a :href="`tel:${site.phone_number}`"
@@ -57,8 +50,8 @@
         <ul class="address">
           <li>Intex-market.uz</li>
           <li>{{ site.phone_number }}</li>
-          <li>{{  site[`address_${getLang}`] }}</li>
-          <li>{{$t('allReserved')}}.</li>
+          <li>{{ site[`address_${getLang}`] }}</li>
+          <li>{{ $t("allReserved") }}.</li>
         </ul>
       </div>
       <div
@@ -73,11 +66,13 @@
           src="@/assets/img/Modal/cross.png"
           alt="cross"
         />
-        <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
-        <p class="text"> {{$t('thanks')}} !</p>
-        <span class="message"
-          > {{$t('yourOrderFramed')}}  </span
-        >
+        <img
+          class="success"
+          src="@/assets/img/Modal/success.png"
+          alt="success"
+        />
+        <p class="text">{{ $t("thanks") }} !</p>
+        <span class="message"> {{ $t("yourOrderFramed") }} </span>
       </div>
     </div>
   </div>
@@ -107,10 +102,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getSite","getLang"]),
+    ...mapGetters(["getSite", "getLang"]),
   },
   methods: {
-    ...mapActions(["fetchConsultation", "fetchSite" ,"fetchBotConsultation"]),
+    ...mapActions(["fetchConsultation", "fetchSite", "fetchBotConsultation"]),
     save() {
       this.v$.$validate();
       if (!this.v$.$error) {
@@ -134,7 +129,7 @@ export default {
           .catch((err) => {
             console.error(err);
           });
-          this.fetchBotConsultation(newForm)
+        this.fetchBotConsultation(newForm);
       }
     },
   },
@@ -143,7 +138,8 @@ export default {
     let site = JSON.parse(localStorage.getItem("siteInfo"));
     this.site = site;
     if (typeof this.site == "object") {
-    } else {1
+    } else {
+      1;
       this.fetchSite().then(() => {
         this.site = this.getSite[0];
         localStorage.setItem("siteInfo", JSON.stringify(this.site));
@@ -230,7 +226,6 @@ export default {
           display: flex;
           align-items: center;
           margin: 0 0 20px 0;
-
           p {
             margin: 0 0 0 15px;
             font-family: "trebuchetms";
@@ -253,12 +248,15 @@ export default {
           margin: 12px 0 0 0;
           display: flex;
           a {
-             margin: 0 25px 0 0;
+            margin: 0 25px 0 0;
             display: flex;
             img {
-              width: 43px;
-              height: 43px;
-             
+              width: 34px;
+              height: 34px;
+              transition: 0.3s all ease-in-out;
+              &:hover {
+                transform: scale(1.1);
+              }
             }
             img:nt-child(3) {
               margin: 0;
@@ -344,82 +342,81 @@ export default {
       }
     }
   }
- 
 }
 @media (max-width: 550px) {
-    .bg {
-      .footer {
-        form {
-          h2 {
-            font-size: 20px;
-            line-height: 23px;
-          }
-          input {
-            width: 272px;
-            font-size: 15px;
-            line-height: 17px;
-          }
-          input[type="text"] {
-            font-size: 15px;
-            line-height: 17px;
-          }
-          input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-          }
-          //firefox
-          input[type="number"] {
-            font-size: 15px;
-            line-height: 17px;
-            -moz-appearance: textfield;
-          }
+  .bg {
+    .footer {
+      form {
+        h2 {
+          font-size: 20px;
+          line-height: 23px;
+        }
+        input {
+          width: 272px;
+          font-size: 15px;
+          line-height: 17px;
+        }
+        input[type="text"] {
+          font-size: 15px;
+          line-height: 17px;
+        }
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        //firefox
+        input[type="number"] {
+          font-size: 15px;
+          line-height: 17px;
+          -moz-appearance: textfield;
+        }
 
-          .consult {
-            font-size: 15px;
-            line-height: 17px;
+        .consult {
+          font-size: 15px;
+          line-height: 17px;
+        }
+      }
+      .dateAdd {
+        .DateTime {
+          .time {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+            p {
+              margin: 0 0 0 12px;
+              font-size: 15px;
+              line-height: 17px;
+            }
+          }
+          .relax {
+            font-size: 12px;
+            line-height: 14px;
+            max-width: 165px;
+          }
+          .social {
+            a {
+              margin: 0;
+              img {
+                margin-right: 12px;
+                width: 24px;
+                height: 24px;
+              }
+            }
           }
         }
-        .dateAdd {
-          .DateTime {
-            .time {
-              img {
-                width: 27px;
-                height: 27px;
-              }
-              p {
-                font-size: 15px;
-                line-height: 17px;
-              }
-            }
-            .relax {
-              font-size: 12px;
-              line-height: 14px;
-              max-width: 165px;
-            }
-            .social {
-              a{
-                margin: 0;
-                img {
-                margin-right: 12px;
-                width: 29px;
-                height: 29px;
-              }
-              }
-              
-            }
+        .address {
+          li {
+            font-size: 12px;
+            line-height: 14px;
           }
-          .address {
-            li {
-              font-size: 12px;
-              line-height: 14px;
-            }
-            li:last-child {
-              font-size: 10px;
-              line-height: 12px;
-            }
+          li:last-child {
+            font-size: 10px;
+            line-height: 12px;
           }
         }
       }
     }
+  }
 }
 </style>

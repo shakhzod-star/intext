@@ -13,7 +13,7 @@ export default new Vuex.Store({
     site: {},
     locale: "uz",
     backend_url: "https://market-index.herokuapp.com/",
-    botToken : 'https://api.telegram.org/bot5381011300:AAEq4uVHwZ99SE-cnFV63I0QRuV03T4Pzx4/',
+    botToken : '5381011300:AAEq4uVHwZ99SE-cnFV63I0QRuV03T4Pzx4/',
     chatId : -723987438,
     // backend_url: 'http://31.44.6.77:5555/'
   },
@@ -22,7 +22,7 @@ export default new Vuex.Store({
       let allUserInfo = `Name: ${data.name}   \n  Number: ${data.phoneNumber}   \n  Address: ${data.address} `
       return new Promise((resolve, reject) => {
         axios                          
-          .post(this.state.botToken + `sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
+          .post(`https://api.telegram.org/bot${this.state.botToken}sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
           .then((res) => {
             console.log(res);
             resolve(res);
@@ -36,7 +36,7 @@ export default new Vuex.Store({
       let allUserInfo = `Name: ${data.name} \n Number: ${data.phoneNumber} `
       return new Promise((resolve, reject) => {
         axios
-          .post(this.state.botToken + `sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
+          .post(`https://api.telegram.org/bot${this.state.botToken}sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
           .then((res) => {
             console.log(res);
             resolve(res);

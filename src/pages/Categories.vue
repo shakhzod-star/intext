@@ -20,7 +20,7 @@
             <span>{{  formatNumber(product.price) }}  {{$t('money')}}</span>
             <p>{{  formatNumber(product.sale_price) }}  {{$t('money')}}</p>
           </div>
-          <button class="order" @click=" open(product) ">
+          <button class="order" v-if="product.status_id != 3"   @click=" open(product) " :disabled="product.status_id == 3">
              {{ $t('order') }}
           </button>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="season">
     <div class="bg">
-      <h2 class="Title">{{ $t('sezonOrder')}}!</h2>
+      <h2 class="Title">{{ $t("sezonOrder") }}!</h2>
     </div>
     <div class="columns">
       <div class="column" v-for="(column, index) in columns" :key="index">
@@ -71,7 +71,7 @@ export default {
       .text {
         display: flex;
         flex-direction: column;
-        align-content:space-between ;
+        align-content: space-between;
         .title {
           margin-bottom: 15px;
           color: #ffffff;
@@ -90,92 +90,91 @@ export default {
       }
     }
     .column:last-child {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
 }
-@media(max-width:1150px){
-.season {
-  .bg {
-    .Title {
-      padding: 20px 0;
-    }
-  }
-  .columns {
-    flex-wrap:wrap;
-   
-    .column {
-      margin-bottom: 30px;
-      .number {
-    
-      }
-      .text {
-        
-        .title {
-        }
-        .subtitle {
-        }
+@media (max-width: 1150px) {
+  .season {
+    .bg {
+      .Title {
+        padding: 20px 0;
       }
     }
-    .column:last-child {
-    }
-  }
-}
-}
-@media(max-width:768px){
-.season {
-  .bg {
-    .Title {
-      padding: 20px 0;
-    }
-  }
-  .columns {
-    flex-direction: column;
-    align-items: center;
-   
-    .column {
-      margin: 0 0 30px 0;
-      .number {
-    
-      }
-      .text {
-        
-        .title {
+    .columns {
+      flex-wrap: wrap;
+
+      .column {
+        margin-bottom: 30px;
+        .number {
         }
-        .subtitle {
+        .text {
+          .title {
+          }
+          .subtitle {
+          }
         }
       }
-    }
-    .column:last-child {
+      .column:last-child {
+      }
     }
   }
 }
-}
-@media(max-width:550px){
-.season {
-  .bg {
-    .Title {
-      font-size: 23px;
-line-height: 27px;
-    }
-  }
-  .columns {
-    padding: 50px 9px 0 9px;
-    .column {
-      .number {
-    
-      }
-      .text {
-        
-        .title {
-        }
-        .subtitle {
-        }
+@media (max-width: 768px) {
+  .season {
+    .bg {
+      .Title {
+        padding: 20px 0;
       }
     }
-    .column:last-child {
+    .columns {
+      flex-direction: column;
+      align-items: center;
+
+      .column {
+        margin: 0 0 30px 0;
+        .number {
+        }
+        .text {
+          .title {
+          }
+          .subtitle {
+          }
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
+@media (max-width: 550px) {
+  .season {
+    .bg {
+      .Title {
+        font-size: 23px;
+        line-height: 27px;
+      }
+    }
+    .columns {
+      padding: 50px 9px 0 9px;
+      .column {
+        .number {
+          font-size: 40px;
+          line-height: 50px;
+        }
+        .text {
+          .title {
+            font-size: 18px;
+            line-height: 20px;
+          }
+          .subtitle {
+          }
+        }
+      }
+      .column:last-child {
+      }
+    }
+  }
 }
 </style>
