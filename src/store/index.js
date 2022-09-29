@@ -24,10 +24,10 @@ export default new Vuex.Store({
         axios                          
           .post(`https://api.telegram.org/bot${this.state.botToken}sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
           .then((res) => {
-            console.log(res);
             resolve(res);
           })
-          .catch(() => {
+          .catch((e) => {
+            console.error(e);
             reject();
           });
       });
@@ -41,7 +41,8 @@ export default new Vuex.Store({
             console.log(res);
             resolve(res);
           })
-          .catch(() => {
+          .catch((e) => {
+            console.error(e);
             reject();
           });
       });
@@ -55,7 +56,8 @@ export default new Vuex.Store({
             ctx.commit("updateCategory", res.data.data);
             resolve(res.data.data);
           })
-          .catch(() => {
+          .catch((e) => {
+            console.error(e);
             reject();
           });
       });
@@ -69,8 +71,9 @@ export default new Vuex.Store({
             ctx.commit("updateProduct", res.data.data);
             resolve(res.data.data);
           })
-          .catch((error) => {
-            reject(error);
+          .catch((e) => {
+            console.error(e);
+            reject();
           });
       });
     },
@@ -99,7 +102,8 @@ export default new Vuex.Store({
           .then((res) => {
             resolve(res);
           })
-          .catch(() => {
+          .catch((e) => {
+            console.error(e);
             reject();
           });
       });
@@ -114,7 +118,6 @@ export default new Vuex.Store({
             },
           })
           .then((res) => {
-            // ctx.commit("updateCategory", res.data.data);
             resolve(res);
           })
           .catch((err) => {
@@ -154,5 +157,5 @@ export default new Vuex.Store({
       return state.locale;
     },
   },
-  modules: {}, /// normalli tegb
+  modules: {},
 });

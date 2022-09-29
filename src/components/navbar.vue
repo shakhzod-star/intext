@@ -5,11 +5,13 @@
         <a href="#" class="logo"> INTEX-SHOP.UZ </a>
         <ul class="navList">
           <li v-for="list in getCategories" :key="list.index">
-            <a  :href="'#'+ list.id ">  {{list[`name_${getLang}`]}}</a>
+            <a :href="'#' + list.id"> {{ list[`name_${getLang}`] }}</a>
           </li>
         </ul>
         <div class="phone_social">
-          <a class="phone" :href="`tel:${site.phone_number}`">{{site.phone_number}}</a>
+          <a class="phone" :href="`tel:${site.phone_number}`">{{
+            site.phone_number
+          }}</a>
           <a :href="site.telegram_link" target="_blank"
             ><img src="@/assets/img/social/telegram.svg" alt="telegram"
           /></a>
@@ -17,11 +19,11 @@
             ><img src="@/assets/img/social/instagram.svg" alt="instagram"
           /></a>
           <div
-           style="text-transform: uppercase;"
+            style="text-transform: uppercase"
             class="lang"
             @click="setLocale"
           >
-            {{ getLang ? getLang : 'uz' }}
+            {{ getLang ? getLang : "uz" }}
           </div>
           <button class="burger" @click="BurgerActive = !BurgerActive">
             <img src="@/assets/img/Modal/burger.svg" alt="burger" />
@@ -29,16 +31,19 @@
         </div>
       </div>
     </div>
-    <div class="burgerMenu"  :class="{  active : BurgerActive  }">
+    <div class="burgerMenu" :class="{ active: BurgerActive }">
       <a href="#" class="intex">INTEX-SHOP.UZ</a>
       <ul class="navList">
         <li class="list" v-for="list in getCategories" :key="list.index">
-          <a :href=" '#' + list.id" @click="BurgerActive = !BurgerActive"  >{{ list[`name_${getLang}`]   }}</a>
+          <a :href="'#' + list.id" @click="BurgerActive = !BurgerActive">{{
+            list[`name_${getLang}`]
+          }}</a>
         </li>
       </ul>
       <div class="socials">
         <a class="phone" :href="`tel:${site.phone_number}`">
-          <img src="@/assets/img/social/phonee.svg" alt="phone" /> {{ $t("call") }}
+          <img src="@/assets/img/social/phonee.svg" alt="phone" />
+          {{ $t("call") }}
         </a>
         <a class="social" :href="site.telegram_link" target="_blank">
           <img src="@/assets/img/social/telegramm.svg" alt="telegram" />
@@ -55,7 +60,6 @@
       class="bgModal"
       @click="BurgerActive = !BurgerActive"
     ></div>
-  
   </div>
 </template>
 
@@ -68,49 +72,48 @@ export default {
       site: {},
       isActive: false,
       navList: [],
-      lang : 'uz'
+      lang: "uz",
     };
   },
   computed: {
-    ...mapGetters(["getSite","getCategories","getLang"]),
+    ...mapGetters(["getSite", "getCategories", "getLang"]),
   },
   methods: {
-    ...mapActions(["fetchSite","fetchCategories", "fetchLang"]),
+    ...mapActions(["fetchSite", "fetchCategories", "fetchLang"]),
     setLocale() {
-      this.isActive = !this.isActive
-      if (this.isActive && this.getLang != 'ru'  ){
-          this.fetchLang('ru')
-      }else{
-            this.fetchLang('uz')
+      this.isActive = !this.isActive;
+      if (this.isActive && this.getLang != "ru") {
+        this.fetchLang("ru");
+      } else {
+        this.fetchLang("uz");
       }
-      this.$i18n.locale = this.getLang      
-      localStorage.setItem('language',this.getLang)
+      this.$i18n.locale = this.getLang;
+      localStorage.setItem("language", this.getLang);
     },
   },
-   mounted() {
-    let locale =  localStorage.getItem('language')
-    if(locale == null){
-      this.fetchLang('uz')
-    }else{
-      this.fetchLang(locale)
+  mounted() {
+    let locale = localStorage.getItem("language");
+    if (locale == null) {
+      this.fetchLang("uz");
+    } else {
+      this.fetchLang(locale);
     }
     let site = JSON.parse(localStorage.getItem("siteInfo"));
-    if( site == null){
-   this.fetchSite().then((res) => {
-        this.site = res[0];
-        localStorage.setItem("siteInfo", JSON.stringify(this.site));
-      }).catch((error)=>{
-        console.log(error);
-      } )
-    }else{
-  this.site = site;
+    if (site == null) {
+      this.fetchSite()
+        .then((res) => {
+          this.site = res[0];
+          localStorage.setItem("siteInfo", JSON.stringify(this.site));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      this.site = site;
     }
-    
-   
-   
   },
   created() {
- this.$store.dispatch('fetchLang')
+    this.$store.dispatch("fetchLang");
   },
 };
 </script>
@@ -150,6 +153,15 @@ export default {
         li {
           margin: 0;
           list-style: none;
+          padding: 3px 0;
+          border-radius: 8px;
+          transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+          &:hover {
+            background: rgba(0, 170, 170, 0.5);
+          }
+          &:active {
+            background: rgba(0, 170, 170, 1);
+          }
           a {
             text-decoration: none;
             font-family: "trebuchetms";
@@ -181,7 +193,7 @@ export default {
             width: 24px;
             height: 24px;
             transition: 0.3s all ease-in-out;
-            &:hover{
+            &:hover {
               transform: scale(1.1);
             }
           }
@@ -206,7 +218,7 @@ export default {
           border-radius: 3px;
           cursor: pointer;
           transition: 0.3s all ease-in-out;
-          &:hover{
+          &:hover {
             transform: scale(1.1);
           }
         }
@@ -224,15 +236,15 @@ export default {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    left:  -500px;
+    left: -500px;
     background: #009398;
     height: 100vh;
     width: 284px;
     z-index: 1001;
-      transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     overflow-y: scroll;
     &.active {
-      left: 0; 
+      left: 0;
     }
     .intex {
       font-family: "Signika-Bold";
