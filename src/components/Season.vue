@@ -46,7 +46,7 @@ export default {
     }
   }
   .columns {
-    padding: 97px 0 71px 0;
+    padding: 97px 0 0 0;
     display: flex;
     justify-content: center;
     .column {
