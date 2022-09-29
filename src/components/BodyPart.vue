@@ -424,6 +424,7 @@ export default {
       padding: 40px 32px 40px 32px;
       .habr_hab {
         max-width: 503px;
+        margin-right: 10px;
         ul {
           text-align: justify;
         }
@@ -708,8 +709,8 @@ export default {
       }
       .habr {
         li {
-          font-size: 12px;
-          line-height: 14px;
+          font-size: 16px;
+          line-height: 20px;
         }
         img {
         }
