@@ -166,7 +166,7 @@ img {
   z-index: 1001;
   max-height: 584px;
   height: 100%;
-
+  overflow-y: scroll;
   .cross {
     position: absolute;
     top: 22px;
