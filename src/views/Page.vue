@@ -10,9 +10,9 @@
 
 <script>
 import Header from "./Header.vue";
-import Season from "../../components/Season.vue";
-import Categories from "../../pages/Categories.vue";
-import BodyPart from "../../components/BodyPart.vue";
+import Season from "../components/Season.vue";
+import Categories from "../pages/Categories.vue";
+import BodyPart from "../components/BodyPart.vue";
 import Footer from "./Footer.vue";
 export default {
   components: {

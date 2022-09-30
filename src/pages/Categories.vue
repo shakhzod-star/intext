@@ -101,7 +101,7 @@
         src="@/assets/icons/Modal/cross.png"
         alt="cross"
       />
-      <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
+      <img class="success" src="@/assets/icons/Modal/success.png" alt="success" />
       <p class="text"> {{$t('thanks')}} !</p>
       <span class="message"
         > {{$t('orderSuccess')}} .</span

@@ -19,7 +19,7 @@
           />
           <img
             class="feedback"
-            src="@/assets/img/feedback.png"
+            src="@/assets/icons/Modal/feedback.png"
             alt="feedback"
           />
           <p class="text">{{ $t("getConsult") }}</p>
@@ -65,7 +65,7 @@
           />
           <img
             class="success"
-            src="@/assets/img/Modal/success.png"
+            src="@/assets/icons/Modal/success.png"
             alt="success"
           />
           <p class="text">{{ $t("thanks") }} !</p>
@@ -135,23 +135,23 @@
             </ul>
             <ul>
               <li>
-                <img src="@/assets/icons/tick.png" alt="tick" />
+                <img src="@/assets/img/tick.png" alt="tick" />
                 {{ $t("strength") }}
               </li>
               <li>
-                <img src="@/assets/icons/tick.png" alt="tick" />
+                <img src="@/assets/img/tick.png" alt="tick" />
                 {{ $t("easyInstall") }}
               </li>
               <li>
-                <img src="@/assets/icons/tick.png" alt="tick" />
+                <img src="@/assets/img/tick.png" alt="tick" />
                 {{ $t("beautifulColors") }}
               </li>
               <li>
-                <img src="@/assets/icons/tick.png" alt="tick" />
+                <img src="@/assets/img/tick.png" alt="tick" />
                 {{ $t("stylishDesign") }}
               </li>
               <li>
-                <img src="@/assets/icons/tick.png" alt="tick" />
+                <img src="@/assets/img/tick.png" alt="tick" />
                 {{ $t("highQualityJust") }}
               </li>
             </ul>
@@ -323,7 +323,7 @@ export default {
       font-size: 20px;
       line-height: 23px;
       text-align: center;
-      padding: 0 5px;
+      padding: 3px 22px;
       height: 36px;
       display: flex;
       justify-content: center;

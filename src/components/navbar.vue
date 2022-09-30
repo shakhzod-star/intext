@@ -13,10 +13,10 @@
             site.phone_number
           }}</a>
           <a :href="site.telegram_link" target="_blank"
-            ><img src="@/assets/img/social/telegram.svg" alt="telegram"
+            ><img src="@/assets/icons/social/telegram.svg" alt="telegram"
           /></a>
           <a :href="site.instagram_link" target="_blank"
-            ><img src="@/assets/img/social/instagram.svg" alt="instagram"
+            ><img src="@/assets/icons/social/instagram.svg" alt="instagram"
           /></a>
           <div
             style="text-transform: uppercase"
@@ -42,15 +42,15 @@
       </ul>
       <div class="socials">
         <a class="phone" :href="`tel:${site.phone_number}`">
-          <img src="@/assets/img/social/phonee.svg" alt="phone" />
+          <img src="@/assets/icons/social/phonee.svg" alt="phone" />
           {{ $t("call") }}
         </a>
         <a class="social" :href="site.telegram_link" target="_blank">
-          <img src="@/assets/img/social/telegramm.svg" alt="telegram" />
+          <img src="@/assets/icons/social/telegramm.svg" alt="telegram" />
           {{ $t("telegram") }}
         </a>
         <a class="social" :href="site.instagram_link" target="_blank">
-          <img src="@/assets/img/social/instagramm.svg" alt="instagram" />
+          <img src="@/assets/icons/social/instagramm.svg" alt="instagram" />
           {{ $t("instagram") }}
         </a>
       </div>
