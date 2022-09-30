@@ -1,195 +1,241 @@
- <template>
- <div >
-  <pulse-loader v-if="loading" :loading="loading" :color="color" class="loading" ></pulse-loader>
-  <div v-else class="all" :id="category.id"  v-for="category in categoryies" :key="category.index" >
-    <div class="bg" >
-      <h2   class="Title">{{   category[`name_${getLang}`] }}</h2>
-    </div>
-    <div class="pools">
-        <div data-aos="fade-up"  v-for="product in category.products" :key=" product.index">
-      <div class="pool"  >
-        <span class="status"   :style="product.status_id == 1  ? 'background: #139d4b;' :  product.status_id == 2  ? 'background: #FFE600;'  : product.status_id == 3  ? 'background: #ED2020;' : ''  "   v-if="product.status_ru != ''">{{ product.status_ru }}</span>
-        <div class="poolName">{{  product[`frame_${getLang}`] }}</div>
-      <div class="box">
-        <img class="categoriesImg" crossorigin="anonymous"   :src="product.image" :alt="product.image"   />
-        <!-- src="@/assets/img/not-aviable.png" -->
-      </div>
-        <!-- <div class="poolComment" v-if="product.comment" >{{ product.comment }}</div> -->
-        <div class="price_order">
-          <div class="price">
-            <span>{{  formatNumber(product.price) }}  {{$t('money')}}</span>
-            <p>{{  formatNumber(product.sale_price) }}  {{$t('money')}}</p>
-          </div>
-          <button class="order" v-if="product.status_id != 3"   @click=" open(product) " :disabled="product.status_id == 3">
-             {{ $t('order') }}
-          </button>
-        </div>
-      </div>
-      
-    </div>
-      <Transition name="bounce">
-      <div v-if="carcasModal" class="carcasModal">
-      <img
-        class="cross"
-        src="@/assets/icons/Modal/cross.png"
-        alt="cross"
-        @click="BModal"
-      />
-      <div class="picture">
-        <p class="text">{{orderItem[`frame_${getLang}`]}}</p>
-         <img crossorigin="anonymous" :src="orderItem.image" :alt="orderItem.image" />
-        <span class="sum">{{formatNumber(orderItem.sale_price) }} {{$t('money')}}   </span>
-      </div>
-      <form class="info" @submit.prevent="save">
-         <input
-          v-model.trim="form.name"
-          :class="v$.form.name.$error ? 'form-error' : ''"
-          type="text"
-          :placeholder="$t('name')"
-           :aria-label="$t('name')"
-        />
-        <p
-          class="p-valid"
-          :style="v$.form.name.$error ? 'opacity: 1' : ''"
-          :class="v$.form.name.$error ? 'error' : ''"
-        >
-          {{$t('setName')}}
-        </p>
-        <input
-          type="text"
-          v-mask="'+998## #######'"
-          v-model.trim="form.number"
-          :placeholder="$t('number')"
-            :aria-label="$t('number')"
-          :class="v$.form.number.$error ? 'form-error' : ''"
-        />
-        <p
-          class="p-valid"
-          :style="v$.form.number.$error ? 'opacity: 1' : ''"
-        >
-          {{$t('setNumber')}}
-        </p>
-          <input
-          v-model.trim="form.address"
-          :class="v$.form.address.$error ? 'form-error' : ''"
-          type="text"
-          :placeholder="$t('yourAddress')"
-               :aria-label="$t('yourAddress')"
-        />
-        <p
-          class="p-valid"
-          :style="v$.form.address.$error ? 'opacity: 1' : ''"
-        >
-             {{$t('setName')}}
-        </p>
-        <button class="order" >
-       {{ $t('order') }}
-        </button>
-      </form>
-    </div>
-      </Transition >
+<template>
+  <div>
+    <pulse-loader
+      v-if="loading"
+      :loading="loading"
+      :color="color"
+      class="loading"
+    ></pulse-loader>
     <div
-      v-if="bgModal"
-      class="bgModal"
-      @click="BModal"
-    ></div>
-     <Transition name="bounce">
-    <div class="successModal" v-if="successModal">
-      <img
-        @click="BModal"
-        class="cross"
-        src="@/assets/icons/Modal/cross.png"
-        alt="cross"
-      />
-      <img class="success" src="@/assets/icons/Modal/success.png" alt="success" />
-      <p class="text"> {{$t('thanks')}} !</p>
-      <span class="message"
-        > {{$t('orderSuccess')}} .</span
-      >
-    </div>
-     </Transition >
+      v-else
+      class="all"
+      :id="category.id"
+      v-for="category in categoryies"
+      :key="category.index"
+    >
+      <div class="bg">
+        <h2 class="Title">{{ category[`name_${getLang}`] }}</h2>
+      </div>
+      <div class="pools">
+        <div
+          data-aos="fade-up"
+          v-for="product in category.products"
+          :key="product.index"
+        >
+          <div class="pool">
+            <span
+              class="status"
+              :style="
+                product.status_id == 1
+                  ? 'background: #139d4b;'
+                  : product.status_id == 2
+                  ? 'background: #FFE600;'
+                  : product.status_id == 3
+                  ? 'background: #ED2020;'
+                  : ''
+              "
+              v-if="product.status_ru != ''"
+              >{{ product.status_ru }}</span
+            >
+            <div class="poolName">{{ product[`frame_${getLang}`] }}</div>
+            <div class="box">
+              <img
+                class="categoriesImg"
+                crossorigin="anonymous"
+                :src="product.image"
+                :alt="product.image"
+              />
+              <!-- src="@/assets/img/not-aviable.png" -->
+            </div>
+            <!-- <div class="poolComment" v-if="product.comment" >{{ product.comment }}</div> -->
+            <div class="price_order">
+              <div class="price">
+                <span>{{ formatNumber(product.price) }} {{ $t("money") }}</span>
+                <p>{{ formatNumber(product.sale_price) }} {{ $t("money") }}</p>
+              </div>
+              <button
+                class="order"
+                v-if="product.status_id != 3"
+                @click="open(product)"
+                :disabled="product.status_id == 3"
+              >
+                {{ $t("order") }}
+              </button>
+            </div>
+          </div>
         </div>
+        <Transition name="bounce">
+          <div v-if="carcasModal" class="carcasModal">
+            <img
+              class="cross"
+              src="@/assets/icons/Modal/cross.png"
+              alt="cross"
+              @click="BModal"
+            />
+            <div class="picture">
+              <p class="text">{{ orderItem[`frame_${getLang}`] }}</p>
+              <img
+                crossorigin="anonymous"
+                :src="orderItem.image"
+                :alt="orderItem.image"
+              />
+              <span class="sum"
+                >{{ formatNumber(orderItem.sale_price) }} {{ $t("money") }}
+              </span>
+            </div>
+            <form class="info" @submit.prevent="save">
+              <input
+                v-model.trim="form.name"
+                :class="v$.form.name.$error ? 'form-error' : ''"
+                type="text"
+                :placeholder="$t('name')"
+                :aria-label="$t('name')"
+              />
+              <p
+                class="p-valid"
+                :style="v$.form.name.$error ? 'opacity: 1' : ''"
+                :class="v$.form.name.$error ? 'error' : ''"
+              >
+                {{ $t("setName") }}
+              </p>
+              <input
+                type="text"
+                v-mask="'+998## #######'"
+                v-model.trim="form.number"
+                :placeholder="$t('number')"
+                :aria-label="$t('number')"
+                :class="v$.form.number.$error ? 'form-error' : ''"
+              />
+              <p
+                class="p-valid"
+                :style="v$.form.number.$error ? 'opacity: 1' : ''"
+              >
+                {{ $t("setNumber") }}
+              </p>
+              <input
+                v-model.trim="form.address"
+                :class="v$.form.address.$error ? 'form-error' : ''"
+                type="text"
+                :placeholder="$t('yourAddress')"
+                :aria-label="$t('yourAddress')"
+              />
+              <p
+                class="p-valid"
+                :style="v$.form.address.$error ? 'opacity: 1' : ''"
+              >
+                {{ $t("setName") }}
+              </p>
+              <button class="order">
+                {{ $t("order") }}
+              </button>
+            </form>
+          </div>
+        </Transition>
+        <div v-if="bgModal" class="bgModal" @click="BModal"></div>
+        <Transition name="bounce">
+          <div class="successModal" v-if="successModal">
+            <img
+              @click="BModal"
+              class="cross"
+              src="@/assets/icons/Modal/cross.png"
+              alt="cross"
+            />
+            <img
+              class="success"
+              src="@/assets/icons/Modal/success.png"
+              alt="success"
+            />
+            <p class="text">{{ $t("thanks") }} !</p>
+            <span class="message"> {{ $t("orderSuccess") }} .</span>
+          </div>
+        </Transition>
+      </div>
+    </div>
   </div>
-
- </div>
 </template>
 
 <script>
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import { mapActions ,mapGetters} from "vuex";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import { mapActions, mapGetters } from "vuex";
 import useVuelidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
 export default {
-  components:{
-      PulseLoader
+  components: {
+    PulseLoader,
   },
-   setup() {
+  setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
-      loading: true ,
+      loading: true,
       carcasModal: false,
-      color: '#009398',
-      bgModal : false ,
+      color: "#009398",
+      bgModal: false,
       successModal: false,
       products: [],
-      categoryies : [],
+      categoryies: [],
       form: {
-        productId : '',
-        name : '',
-        phoneNumber : ''
+        productId: "",
+        name: "",
+        phoneNumber: "",
       },
       orderItem: {},
-      orderId : 1 
+      orderId: 1,
     };
   },
-    validations() {
+  validations() {
     return {
       form: {
         name: { required },
         number: { required, minLength: minLength(14) },
-        address : {required}
+        address: { required },
       },
     };
   },
-  computed:{
-    ...mapGetters(['getProducts',"getCategories" ,"getLang"])
+  computed: {
+    ...mapGetters(["getProducts", "getCategories", "getLang"]),
   },
-  methods:{
-...mapActions(['fetchCategories','fetchProducts', 'fetchOrder' , "fetchBotOrder"]),
-BModal(){ 
-  if(this.bgModal){
-    this.successModal = false 
-    this.carcasModal = false
-  }
-  this.bgModal = !this.bgModal 
-},
-formatNumber (num){
-   return  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  },
- open(product){
-  this.orderId = product.id ;
-this.carcasModal = !this.carcasModal;
-this.bgModal = !this.bgModal
-this.orderItem = {
-  frame_ru :  product.frame_ru ,
-  image : product.image ,
-  sale_price : product.sale_price 
-}
- },
-  save(){
-   this.v$.$validate(); 
-   if (!this.v$.$error){
-     let newForm = {
-          productId :  this.orderId ,
+  methods: {
+    ...mapActions([
+      "fetchCategories",
+      "fetchProducts",
+      "fetchOrder",
+      "fetchBotOrder",
+    ]),
+    BModal() {
+      if (this.bgModal) {
+        this.successModal = false;
+        this.carcasModal = false;
+      }
+      this.bgModal = !this.bgModal;
+    },
+    formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+    open(product) {
+      this.orderId = product.id;
+      this.carcasModal = !this.carcasModal;
+      this.bgModal = !this.bgModal;
+      this.orderItem = {
+        frame_ru: product.frame_ru,
+        image: product.image,
+        sale_price: product.sale_price,
+      };
+    },
+    save() {
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        let newForm = {
+          productId: this.orderId,
           name: this.form.name,
           phoneNumber: this.form.number.slice(4),
-          address : this.form.address
+          address: this.form.address,
         };
-         this.fetchOrder(newForm).then((res) => {
+        this.fetchOrder(newForm)
+          .then((res) => {
             if (res.status == 201) {
-                this.carcasModal = false ;
+              this.carcasModal = false;
               this.form.name = "";
               this.form.number = "";
               this.form.address = "";
@@ -197,43 +243,42 @@ this.orderItem = {
               this.v$.form.number = false;
               this.v$.form.address = false;
               this.successModal = true;
-                  setTimeout(() => {
-              this.successModal = false;
-             this.bgModal = false 
-            }, 3000);
+              setTimeout(() => {
+                this.successModal = false;
+                this.bgModal = false;
+              }, 3000);
             }
-          
           })
           .catch((err) => {
             console.error(err);
           });
-          this.fetchBotOrder(newForm)
-   }
-  }
+        this.fetchBotOrder(newForm);
+      }
+    },
   },
-async  mounted(){
-   await this.fetchProducts()
-       this.fetchCategories().then( (res)=>{
-      this.categoryies = res
-     this.categoryies.map((v)=>{
-         const cater =  this.getProducts.filter((va)=>  v.id == va.category_id)
-        v.products = cater
-        this.loading = false
-      return v
-     })
-    })
-  }
+  async mounted() {
+    await this.fetchProducts();
+    this.fetchCategories().then((res) => {
+      this.categoryies = res;
+      this.categoryies.map((v) => {
+        const cater = this.getProducts.filter((va) => v.id == va.category_id);
+        v.products = cater;
+        this.loading = false;
+        return v;
+      });
+    });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.loading{
+.loading {
   margin: 20px auto;
   display: flex;
   justify-content: center;
 }
 
-.all{
+.all {
   padding-top: 71px;
 }
 .bg {
@@ -256,13 +301,14 @@ async  mounted(){
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 0px 35px 35px 35px;
     position: relative;
-    max-width:340px;
+    max-width: 340px;
+    
     .status {
       position: absolute;
       top: 0;
       left: 0;
       padding: 4px 18px;
-      
+
       font-family: "trebuchetms";
       font-style: normal;
       font-weight: 700;
@@ -281,14 +327,14 @@ async  mounted(){
       text-align: center;
       color: #009398;
     }
-    
-    .box{
+
+    .box {
       display: flex;
-      max-width:275px;
-      max-height:125px;
-      .categoriesImg{
-      margin-bottom: 7px;
-      width: 100%;
+      max-width: 275px;
+      max-height: 125px;
+      .categoriesImg {
+        margin-bottom: 7px;
+        width: 100%;
       }
     }
     .poolComment {
@@ -364,10 +410,54 @@ async  mounted(){
   .pool:nth-child(3n) {
     margin-right: 0;
   }
+  
 }
-@media(max-width:500px){
-  .all{
-  padding-top: 62px;
+@media(max-width:800px){
+  .pools .aos-animate:last-child .pool {
+    margin-bottom: 0;
+  }
 }
+
+@media (max-width: 500px) {
+  .all {
+    padding-top: 62px;
+  }
+}
+@media (max-width: 380px) {
+  .pools {
+    .pool {
+      padding: 32px 12px 28px 12px;
+      .status {
+      }
+      .poolName {
+      }
+
+      .box {
+      }
+      .poolComment {
+      }
+      .price_order {
+        .price {
+          span {
+            font-size: 10px;
+            line-height: 11px;
+          }
+          span:before {
+          }
+          p {
+            font-size: 14px;
+            line-height: 15px;
+            margin: 5px 0 0 0;
+            white-space: nowrap;
+          }
+        }
+        .order {
+           white-space: nowrap;
+            font-size: 14px;
+            line-height: 15px;
+        }
+      }
+    }
+  }
 }
 </style>

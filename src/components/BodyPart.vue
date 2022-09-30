@@ -589,9 +589,9 @@ export default {
   .ours {
     .ours_clients {
       h2 {
-        font-size: 23px;
-        line-height: 27px;
-        margin-bottom: 48px;
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 20px;
       }
       .ours_link {
         align-items: start;
@@ -681,7 +681,7 @@ export default {
       h2 {
       }
       .ours_link {
-        margin-bottom: 44px;
+        margin-bottom: 20px;
         .box {
           img {
           }
@@ -708,6 +708,7 @@ export default {
         line-height: 22px;
       }
       .habr {
+        padding: 20px 10px;
         li {
           font-size: 16px;
           line-height: 20px;
