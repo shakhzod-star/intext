@@ -14,12 +14,12 @@
           <img
             class="cross"
             @click="modal = false"
-            src="@/assets/img/Modal/cross.png"
+            src="@/assets/icons/Modal/cross.png"
             alt="cross"
           />
           <img
             class="feedback"
-            src="@/assets/img/Modal/feedback.png"
+            src="@/assets/img/feedback.png"
             alt="feedback"
           />
           <p class="text">{{ $t("getConsult") }}</p>
@@ -60,7 +60,7 @@
           <img
             @click="successModal = !successModal"
             class="cross"
-            src="@/assets/img/Modal/cross.png"
+            src="@/assets/icons/Modal/cross.png"
             alt="cross"
           />
           <img
@@ -135,23 +135,23 @@
             </ul>
             <ul>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />
+                <img src="@/assets/icons/tick.png" alt="tick" />
                 {{ $t("strength") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />
+                <img src="@/assets/icons/tick.png" alt="tick" />
                 {{ $t("easyInstall") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />
+                <img src="@/assets/icons/tick.png" alt="tick" />
                 {{ $t("beautifulColors") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />
+                <img src="@/assets/icons/tick.png" alt="tick" />
                 {{ $t("stylishDesign") }}
               </li>
               <li>
-                <img src="@/assets/img/tick.png" alt="tick" />
+                <img src="@/assets/icons/tick.png" alt="tick" />
                 {{ $t("highQualityJust") }}
               </li>
             </ul>
@@ -192,7 +192,7 @@ export default {
       if (!this.v$.$error) {
         let newForm = {
           name: this.form.name,
-          phoneNumber: this.form.number.slice(4),
+          phoneNumber: this.form.number.slice(4)
         };
         this.fetchConsultation(newForm)
           .then((res) => {

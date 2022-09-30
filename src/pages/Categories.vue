@@ -1,4 +1,4 @@
- <template >
+ <template>
  <div >
   <pulse-loader v-if="loading" :loading="loading" :color="color" class="loading" ></pulse-loader>
   <div v-else class="all" :id="category.id"  v-for="category in categoryies" :key="category.index" >
@@ -31,7 +31,7 @@
       <div v-if="carcasModal" class="carcasModal">
       <img
         class="cross"
-        src="@/assets/img/Modal/cross.png"
+        src="@/assets/icons/Modal/cross.png"
         alt="cross"
         @click="BModal"
       />
@@ -98,7 +98,7 @@
       <img
         @click="BModal"
         class="cross"
-        src="@/assets/img/Modal/cross.png"
+        src="@/assets/icons/Modal/cross.png"
         alt="cross"
       />
       <img class="success" src="@/assets/img/Modal/success.png" alt="success" />
@@ -164,7 +164,6 @@ BModal(){
     this.carcasModal = false
   }
   this.bgModal = !this.bgModal 
-  
 },
 formatNumber (num){
    return  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -201,7 +200,7 @@ this.orderItem = {
                   setTimeout(() => {
               this.successModal = false;
              this.bgModal = false 
-            }, 5000);
+            }, 3000);
             }
           
           })

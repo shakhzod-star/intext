@@ -2,15 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './app.scss'
+import '@/assets/style/app.scss'
 import VueMask from 'v-mask'
 import i18n from  './i18n';
 import AOS from 'aos'
 import '@/assets/style/aos.css'
-
-
-
-
 
 Vue.config.productionTip = false
 Vue.use(VueMask);

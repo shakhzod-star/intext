@@ -26,7 +26,7 @@
             {{ getLang ? getLang : "uz" }}
           </div>
           <button class="burger" @click="BurgerActive = !BurgerActive">
-            <img src="@/assets/img/Modal/burger.svg" alt="burger" />
+            <img src="@/assets/icons/Modal/burger.svg" alt="burger" />
           </button>
         </div>
       </div>

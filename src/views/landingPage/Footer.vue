@@ -29,7 +29,7 @@
       <div class="dateAdd">
         <div class="DateTime">
           <div class="time">
-            <img src="@/assets/img/time.png" alt="time" />
+            <img src="@/assets/icons/time.png" alt="time" />
             <p>{{ $t("workTime") }}</p>
           </div>
           <div class="relax">
@@ -63,7 +63,7 @@
         <img
           @click="successModal = !successModal"
           class="cross"
-          src="@/assets/img/Modal/cross.png"
+          src="@/assets/icons/Modal/cross.png"
           alt="cross"
         />
         <img
