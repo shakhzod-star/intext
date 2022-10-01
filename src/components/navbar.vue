@@ -92,28 +92,19 @@ export default {
     },
   },
   mounted() {
+       this.fetchSite()
+        .then((res) => {
+          this.site = res[0];
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     let locale = localStorage.getItem("language");
     if (locale == null) {
       this.fetchLang("uz");
     } else {
       this.fetchLang(locale);
     }
-    let site = JSON.parse(localStorage.getItem("siteInfo"));
-    if (site == null) {
-      this.fetchSite()
-        .then((res) => {
-          this.site = res[0];
-          localStorage.setItem("siteInfo", JSON.stringify(this.site));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      this.site = site;
-    }
-  },
-  created() {
-    this.$store.dispatch("fetchLang");
   },
 };
 </script>
@@ -134,7 +125,6 @@ export default {
       max-width: 1440px;
       padding: 20px 66px;
       margin: 0 auto;
-
       .logo {
         text-decoration: none;
         font-family: "Signika-Bold";

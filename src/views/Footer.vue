@@ -33,24 +33,24 @@
             <p>{{ $t("workTime") }}</p>
           </div>
           <div class="relax">
-            {{ site[`work_time_${getLang}`] }}
+            {{ getSite[0][`work_time_${getLang}`] }}
           </div>
           <div class="social">
-            <a :href="`tel:${site.phone_number}`"
+            <a :href="`tel:${getSite[0].phone_number}`"
               ><img src="@/assets/icons/social/phone.png" alt="phone"
             /></a>
-            <a :href="site.telegram_link" target="_blank">
+            <a :href="getSite[0].telegram_link" target="_blank">
               <img src="@/assets/icons/social/telegram.svg" alt="telegram"
             /></a>
-            <a :href="site.instagram_link" target="_blank"
+            <a :href="getSite[0].instagram_link" target="_blank"
               ><img src="@/assets/icons/social/instagram.svg" alt="instagram"
             /></a>
           </div>
         </div>
         <ul class="address">
           <li>Intex-market.uz</li>
-          <li>{{ site.phone_number }}</li>
-          <li>{{ site[`address_${getLang}`] }}</li>
+          <li>{{ getSite[0].phone_number }}</li>
+          <li>{{ getSite[0][`address_${getLang}`] }}</li>
           <li>{{ $t("allReserved") }}.</li>
         </ul>
       </div>
@@ -90,7 +90,6 @@ export default {
     return {
       successModal: false,
       form: {},
-      site: {},
     };
   },
   validations() {
@@ -135,16 +134,17 @@ export default {
   },
 
   mounted() {
-    let site = JSON.parse(localStorage.getItem("siteInfo"));
-    this.site = site;
-    if (typeof this.site == "object") {
-    } else {
-      1;
-      this.fetchSite().then(() => {
-        this.site = this.getSite[0];
-        localStorage.setItem("siteInfo", JSON.stringify(this.site));
-      });
-    }
+    // let site = JSON.parse(localStorage.getItem("siteInfo"));
+    // this.site = site;
+
+    // if (typeof this.site == "object") {
+    // } else {
+    //   1;
+    //   this.fetchSite().then(() => {
+    //     this.site = this.getSite[0];
+    //     localStorage.setItem("siteInfo", JSON.stringify(this.site));
+    //   });
+    // }
   },
 };
 </script>
