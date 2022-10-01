@@ -271,7 +271,7 @@ export default {
       text-align: start;
       max-width: 359px;
       width: 100%;
-      padding: 12px 5px 12px 10px;
+      padding: 12px 5px 12px 12px;
       font-family: "trebuchetms";
       font-style: normal;
       font-weight: 700;
