@@ -92,13 +92,7 @@ export default {
     },
   },
   mounted() {
-       this.fetchSite()
-        .then((res) => {
-          this.site = res[0];
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    this.fetchSite().then(res => this.site = res[0]).catch(error => console.log(error));
     let locale = localStorage.getItem("language");
     if (locale == null) {
       this.fetchLang("uz");

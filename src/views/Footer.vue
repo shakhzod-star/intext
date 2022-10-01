@@ -132,19 +132,7 @@ export default {
       }
     },
   },
-
   mounted() {
-    // let site = JSON.parse(localStorage.getItem("siteInfo"));
-    // this.site = site;
-
-    // if (typeof this.site == "object") {
-    // } else {
-    //   1;
-    //   this.fetchSite().then(() => {
-    //     this.site = this.getSite[0];
-    //     localStorage.setItem("siteInfo", JSON.stringify(this.site));
-    //   });
-    // }
   },
 };
 </script>
