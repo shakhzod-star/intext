@@ -245,6 +245,9 @@ export default {
     margin: auto;
     z-index: 1001;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .cross {
       position: absolute;
       top: 22px;
@@ -265,16 +268,15 @@ export default {
       border: 1px solid #cbcbcb;
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
       border-radius: 17px;
-      text-align: center;
+      text-align: start;
       max-width: 359px;
       width: 100%;
-      padding: 12px 0;
+      padding: 12px 5px 12px 10px;
       font-family: "trebuchetms";
       font-style: normal;
       font-weight: 700;
       font-size: 25px;
       line-height: 29px;
-      text-align: center;
 
       color: #a3a3a3;
     }
@@ -708,7 +710,7 @@ export default {
         line-height: 22px;
       }
       .habr {
-        padding: 20px 10px;
+        padding: 20px 15px;
         li {
           font-size: 16px;
           line-height: 20px;

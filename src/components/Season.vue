@@ -157,7 +157,7 @@ export default {
       }
     }
     .columns {
-      padding: 50px 9px 0 9px;
+      padding: 50px 15px 0 15px;
       .column {
         .number {
           font-size: 40px;
