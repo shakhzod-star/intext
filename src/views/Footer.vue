@@ -33,24 +33,24 @@
             <p>{{ $t("workTime") }}</p>
           </div>
           <div class="relax">
-            {{ getSite[0][`work_time_${getLang}`] }}
+            {{     getSite[`work_time_${getLang}`]  }}
           </div>
           <div class="social">
-            <a :href="`tel:${getSite[0].phone_number}`"
+            <a :href="`tel:${getSite.phone_number}`"
               ><img src="@/assets/icons/social/phone.png" alt="phone"
             /></a>
-            <a :href="getSite[0].telegram_link" target="_blank">
+            <a :href="getSite.telegram_link" target="_blank">
               <img src="@/assets/icons/social/telegram.svg" alt="telegram"
             /></a>
-            <a :href="getSite[0].instagram_link" target="_blank"
+            <a :href="getSite.instagram_link" target="_blank"
               ><img src="@/assets/icons/social/instagram.svg" alt="instagram"
             /></a>
           </div>
         </div>
         <ul class="address">
           <li>Intex-market.uz</li>
-          <li>{{ getSite[0].phone_number }}</li>
-          <li>{{ getSite[0][`address_${getLang}`] }}</li>
+          <li>{{ getSite.phone_number }}</li>
+          <li>{{ getSite[`address_${getLang}`] }}</li>
           <li>{{ $t("allReserved") }}.</li>
         </ul>
       </div>

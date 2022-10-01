@@ -23,9 +23,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios                          
           .post(`https://api.telegram.org/bot${this.state.botToken}sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
-          .then((res) => {
-            resolve(res);
-          })
+          .then((res) => resolve(res))
           .catch((e) => {
             console.error(e);
             reject();
@@ -82,8 +80,8 @@ export default new Vuex.Store({
         axios
           .get(this.state.backend_url + "api/home/site")
           .then((res) => {
-            resolve(res.data.data);
-            ctx.commit("updateSite", res.data.data);
+            resolve(res?.data?.data[0]);
+            ctx.commit("updateSite", res?.data?.data[0]);
           })
           .catch((error) => {
             reject(error);
