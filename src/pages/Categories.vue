@@ -125,7 +125,7 @@
               >
                 {{ $t("setName") }}
               </p>
-              <button class="order">
+              <button class="order" :disabled="disabled">
                 {{ $t("order") }}
               </button>
             </form>
@@ -175,6 +175,7 @@ export default {
       successModal: false,
       products: [],
       categoryies: [],
+      disabled : false ,
       form: {
         productId: "",
         name: "",
@@ -224,6 +225,7 @@ export default {
       };
     },
     save() {
+      this.disabled = true
       this.v$.$validate();
       if (!this.v$.$error) {
         let newForm = {
@@ -243,6 +245,7 @@ export default {
               this.v$.form.number = false;
               this.v$.form.address = false;
               this.successModal = true;
+              this.disabled = false
               setTimeout(() => {
                 this.successModal = false;
                 this.bgModal = false;

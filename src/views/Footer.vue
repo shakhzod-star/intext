@@ -24,7 +24,7 @@
         <p class="p-valid" :style="v$.form.number.$error ? 'opacity: 1' : ''">
           {{ $t("setNumber") }}
         </p>
-        <button class="consult">{{ $t("toConsult") }}</button>
+        <button class="consult" :disabled="disabled">{{ $t("toConsult") }}</button>
       </form>
       <div class="dateAdd">
         <div class="DateTime">
@@ -90,6 +90,7 @@ export default {
     return {
       successModal: false,
       form: {},
+      disabled : false
     };
   },
   validations() {
@@ -106,6 +107,7 @@ export default {
   methods: {
     ...mapActions(["fetchConsultation", "fetchSite", "fetchBotConsultation"]),
     save() {
+      this.disabled = true
       this.v$.$validate();
       if (!this.v$.$error) {
         let newForm = {
@@ -120,6 +122,7 @@ export default {
               this.v$.form.name = false;
               this.v$.form.number = false;
               this.successModal = true;
+              this.disabled = false
             }
             setTimeout(() => {
               this.successModal = false;

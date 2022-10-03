@@ -36,7 +36,6 @@ export default new Vuex.Store({
         axios
           .post(`https://api.telegram.org/bot${this.state.botToken}sendMessage?chat_id=${this.state.chatId}&text=${allUserInfo}`)
           .then((res) => {
-            console.log(res);
             resolve(res);
           })
           .catch((e) => {

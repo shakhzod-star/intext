@@ -4,12 +4,12 @@
       <div class="modalPart">
         <h2 class="Title">{{ $t("freeDeliver") }}</h2>
         <p class="text">{{ $t("orderFreeIn") }} {{ $t("orderPayOut") }}</p>
-        <button class="add" @click="modal = !modal">
-          {{ $t("checkout") }}
+        <button  class="add" @click="modal = !modal">
+          {{ $t("checkout")}} 
         </button>
       </div>
       <div v-if="modal || successModal" class="bgModal" @click="outClick"></div>
-      <Transition name="bounce">
+      <Transition name="bounce" >
         <form v-if="modal" class="modal" @submit.prevent="save">
           <img
             class="cross"
@@ -52,10 +52,10 @@
           >
             {{ $t("setNumber") }}
           </p>
-          <button class="order">{{ $t("order") }}</button>
+          <button class="order" :disabled="disabled">{{ $t("order") }}</button>
         </form>
       </Transition>
-      <Transition name="bounce">
+      <Transition name="bounce" >
         <div class="successModal" v-if="successModal">
           <img
             @click="successModal = !successModal"
@@ -173,6 +173,7 @@ export default {
     return {
       modal: false,
       successModal: false,
+      disabled: false,
       form: {},
     };
   },
@@ -188,6 +189,7 @@ export default {
   methods: {
     ...mapActions(["fetchConsultation", "fetchBotConsultation"]),
     save() {
+      this.disabled = true
       this.v$.$validate();
       if (!this.v$.$error) {
         let newForm = {
@@ -204,6 +206,7 @@ export default {
             }
             this.v$.form.name = false;
             this.v$.form.number = false;
+            this.disabled = false
             setTimeout(() => {
               this.successModal = false;
             }, 5000);

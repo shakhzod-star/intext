@@ -49,11 +49,11 @@ a {
 
 
 .bounce-enter-active {
-  animation: bounce-in 0.3s;
+  animation: bounce-in 0.6s;
 }
 .bounce-leave-active {
   animation: bounce-in 0.3s reverse;
-  transition-duration: 1s;
+
 }
 @keyframes bounce-in {
   0% {
@@ -66,6 +66,7 @@ a {
     transform: scale(1);
   }
 }
+
 
 
 
